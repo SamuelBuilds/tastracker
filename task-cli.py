@@ -1,45 +1,29 @@
 import argparse, json, time
+import tasks as t
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--add", help="Add a new task.")
+subparsers = parser.add_subparsers(dest="command", help="subcommands")
+#add parser
+add=subparsers.add_parser("add", help="Add a new task.")
+
+add.add_argument("add", help="Add a new task.")
+#update parser
+update=subparsers.add_parser("update", help="update a specific task by ID")
+update.add_argument("ID", type=int, help="Specify task id")
+update.add_argument("newContent", type=str,help="add new change")
 args = parser.parse_args()
-
-class Task:
-    def __init__(self, task):
-        self.task = task
-        self.id = time.time()
-        self.data = {
-            "task":{
-                    "content":self.task,
-                    "id": self.id
-                }
-            }
-    
-    def dump(self):
-            try:
-                with open("task.json", 'r') as file:
-                    data = json.load(file)
-
-                if isinstance(data, list):
-                    data.append(self.data) 
-                else:
-                    data = [data, self.data] 
-
-                
-                with open("task.json", 'w') as file:
-                    json.dump(data, file, indent=4)
-            except json.JSONDecodeError:
-                with open("task.json", 'w') as file:
-                    json.dump(self.data, file, indent=4)
-            except FileNotFoundError:
-                print("Error: The file does not exist.")
-    
-    def read(self):
-        with open("task.json","r") as f:
-            data = json.load(f)
-        return data
-
-task = Task(args.add)
-task.dump()
-read = task.read()
-print(len(read))
+if args.command=="add":
+    task = t.Task()
+    task.dump(args.add)
+elif args.command=="update":
+    task = t.Task()
+    task.update(args.ID, args.newContent)
+else: 
+    print("""
+    Welcome to your task tracker!\n 
+    Usage:
+    Add A New Task:
+    task-cli add [new task]
+    Update:
+    task-cli update [task number] [Your Update]
+    """)
