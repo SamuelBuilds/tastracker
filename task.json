@@ -1,20 +1,29 @@
 [
    {
       "task": {
-         "content": "go to homez!",
-         "id": 1731683397.0632322
+         "content": "watch some tiktok",
+         "id": 1731795082.5563858,
+         "status": "in-progress",
+         "createdAt": "Sun Nov 17 01:11:22 2024",
+         "updatedAt": ""
       }
    },
    {
       "task": {
-         "content": "watch the primeagen",
-         "id": 1731756303.374774
+         "content": "watch some youtube",
+         "id": 1731795088.0770664,
+         "status": "in-progress",
+         "createdAt": "Sun Nov 17 01:11:28 2024",
+         "updatedAt": ""
       }
    },
    {
       "task": {
-         "content": "watch the primeagen",
-         "id": 1731756690.3445244
+         "content": "watch some netflix",
+         "id": 1731795095.0429566,
+         "status": "todo",
+         "createdAt": "Sun Nov 17 01:11:35 2024",
+         "updatedAt": ""
       }
    }
 ]

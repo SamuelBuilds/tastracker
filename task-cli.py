@@ -1,3 +1,8 @@
+#this intracts with the Users
+"""
+Created by: SamuelBuilds
+"""
+
 import json, time
 import tasks as t
 from args import *
@@ -7,12 +12,21 @@ if args.command=="add":
 elif args.command=="update":
     task.update(args.updateID, args.newContent)
 elif args.command == "list":
-    try:
-         task.list()
-    except json.JSONDecodeError:
-        print("You might not have any task!")
+    if args.status == None:
+        try:
+            task.list("all")
+        except json.JSONDecodeError:
+            print("You might not have any task!")
+    else:
+        task.list(args.status)
+#elif args.command == "status":
+ #   task.list(args.status)
 elif args.command == "delete":
     task.delete(args.deleteID)
+elif args.command == "mark-done":
+    task.mark_done(args.mdID)
+elif args.command == "mark-in-progress":
+    task.mark_in_progress(args.ipID)
 else: 
     print("""
     Welcome to your task tracker!\n 
