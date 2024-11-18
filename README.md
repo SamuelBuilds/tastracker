@@ -1,5 +1,5 @@
 # Welcome to TasTrack
-Tastrack is a cli-based app, that allow you manage you tasks using a few commands.
+Tastrack is a cli-based app, that allow you manage you tasks using a few commands. https://roadmap.sh/projects/task-tracker
 # TasTrack CLI - Quick Guide
 
 ## Commands
